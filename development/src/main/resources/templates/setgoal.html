@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Goal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .container h2 {
+            color: #00A5E3;
+        }
+
+        .input-group {
+            margin-bottom: 10px;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .input-group input {
+            width: 285px;
+            padding: 5px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            border: 1px solid #00A5E3;
+            border-radius: 5px;
+        }
+        
+        .input-group input:focus {
+            outline-color: #00A5E3;
+        }
+        
+        .input-group select {
+            width: 285px;
+            padding: 5px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            border: 1px solid #00A5E3;
+            border-radius: 5px;
+        }
+
+        .input-group select:focus {
+            outline-color: #00A5E3;
+        }
+
+        .btn {
+            background-color: #00A5E3;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #0077A8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Select Goal</h2>
+        
+        <div th:if="${message != null}" class="message"> 
+            [[${message}]]
+        </div>
+        
+        <form 
+            th:action="@{/selectgoal}" 
+            method="post"
+            role="form"
+            th:object="${goal}"
+        >
+           
+            <div class="input-group">
+                <label for="targetValue">Target Value(days):</label>
+                <input th:field="*{targetValue}" type="text" id="targetValue" name="targetValue" placeholder="Enter target value" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="targetSet">Target Set:</label>
+                <select th:field="*{targetSet}" id="targetSet" name="targetSet" placeholder="Select targetSet" required>
+                    <option value="True">True</option>
+                    <option value="False">False</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label for="progress">Progress:</label>
+                <select th:field="*{progress}" id="progress" name="progress" placeholder="Select progress" required>
+                    <option value="NotYetStarted">Not Yet Started</option>
+                    <option value="InProgress">In Progress</option>
+                    <option value="Completed">Completed</option>
+                </select>
+            </div>
+            <button type="submit" class="btn">Set Goal</button>
+        </form>
+    </div>
+</body>
+</html>

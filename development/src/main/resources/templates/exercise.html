@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Exercise List</title>
+	<style>
+		table {
+			border: 1px solid black;
+			border-collapse: collapse;
+			width: 100%;
+			font-size: 20px;
+			padding: 5px;
+		}
+
+		th,
+		td {
+
+			border: 1px solid black;
+		}
+
+		th {
+			background-color: #0077A8;
+			color: white;
+
+		}
+
+		td {
+			padding-left: 5px;
+
+		}
+	</style>
+</head>
+
+<body>
+
+	<table>
+		<tr>
+			<!--<th>User Id</th>-->
+			<th>Exercise Id</th>
+			<th>Exercise Name</th>
+			<th>Start Time</th>
+			<th>End Time</th>
+			<th>Duration(min)</th>
+			<th>Date</th>
+			
+		</tr>
+		<tr th:each="exercises : ${exercise}">
+			<td th:text="${exercises.exerciseId}"></td>
+			<td th:text="${exercises.exerciseName}"></td>
+			<td th:text="${exercises.startTime}"></td>
+			<td th:text="${exercises.endTime}"></td>
+			<td th:text="${exercises.duration}"></td>
+			<td th:text="${exercises.date}"></td>
+		</tr>
+	</table>
+
+</body>
+
+</html>

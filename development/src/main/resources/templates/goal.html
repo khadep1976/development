@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goals</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            width: 600px;
+            text-align: center;
+        }
+
+        .container h2 {
+            color: #00A5E3;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #00A5E3;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Goals</h2>
+        <table>
+            <thead>
+                <tr>
+                    
+                    <th>Target Value</th>
+                    <th>Target Set</th>
+                    <th>Progress</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Use Thymeleaf to loop through the list of goals and populate the table -->
+                <tr th:each="goals : ${goal}">
+                   
+                    <td th:text="${goals.targetValue}">Target Value</td>
+                    <td th:text="${goals.targetSet}">Target Set</td>
+                    <td th:text="${goals.progress}">Progress</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
